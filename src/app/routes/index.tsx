@@ -1,4 +1,3 @@
-import React from "react";
 // Utils
 import { SafeAreaProvider } from "react-native-safe-area-context";
 // Navigation

@@ -1,15 +1,29 @@
-import { Text, SafeAreaView } from "react-native";
-import React from "react";
-import Container from "app/components/Container";
-// Locales
-import i18n from "locales/index";
+import { Text, SafeAreaView, Dimensions } from "react-native";
+// import Container from "app/components/Container";
+import ChatHeader from "app/components/ChatHeader";
+import { HomeScreenNavigationProp } from "app/routes/types";
+import ChatHistory from "app/components/ChatHistory";
+import ChatInput from "app/components/ChatInput";
 
-const Home: React.FC = () => {
+const deviceHeight = Dimensions.get("window").height;
+
+interface Props {
+  navigation: HomeScreenNavigationProp;
+}
+
+const Home: React.FC<Props> = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Container>
-        <Text>{i18n.t("title")}</Text>
-      </Container>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+        justifyContent: "space-between",
+        height: deviceHeight,
+      }}
+    >
+      <ChatHeader navigation={navigation} />
+      <ChatHistory />
+      <ChatInput />
     </SafeAreaView>
   );
 };
